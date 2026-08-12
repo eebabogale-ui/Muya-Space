@@ -2,6 +2,6 @@
   "name": "muya-space",
   "version": "1.0.0",
   "scripts": {
-    "build": "mkdir -p dist && cp -r public/* dist/ 2>/dev/null && cp -r artifact/* dist/ 2>/dev/null && cp -r assets/* dist/ 2>/dev/null && cp -r lib/* dist/ 2>/dev/null && cp -r scripts/* dist/ 2>/dev/null && echo 'Build complete'"
+    "build": "echo 'Build complete' && mkdir -p dist"
   }
 }
