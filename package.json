@@ -1,1 +1,1 @@
-{"name":"muya-space","version":"1.0.0","scripts":{"build":"echo Build done > public/index.html"}}
+{"name":"muya-space","version":"1.0.0","scripts":{"build":"echo Build done > public/index.html"},"dependencies":{"express":"^5.2.1","next":"^16.3.0","react":"^19.2.8","react-dom":"^19.2.8","vite":"^8.2.1"}}
