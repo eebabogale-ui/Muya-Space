@@ -1,0 +1,1 @@
+{"name":"muya-space","version":"1.0.0","scripts":{"build":"echo Build done > public/index.html"}}

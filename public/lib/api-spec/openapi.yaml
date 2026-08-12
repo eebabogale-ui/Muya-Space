@@ -1,0 +1,588 @@
+openapi: 3.1.0
+info:
+  # Do not change the title, if the title changes, the import paths will be broken
+  title: Api
+  version: 0.1.0
+  description: API specification
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: marketplace
+    description: Handyman marketplace operations
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      description: Returns server health status
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+  /categories:
+    get:
+      operationId: listServiceCategories
+      tags: [marketplace]
+      summary: List service categories
+      responses:
+        "200":
+          description: Service categories
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ServiceCategory"
+  /customer/dashboard:
+    get:
+      operationId: getCustomerDashboard
+      tags: [marketplace]
+      summary: Get the customer dashboard
+      responses:
+        "200":
+          description: Customer dashboard data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CustomerDashboard"
+  /handyman/dashboard:
+    get:
+      operationId: getHandymanDashboard
+      tags: [marketplace]
+      summary: Get the handyman dashboard
+      responses:
+        "200":
+          description: Handyman dashboard data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HandymanDashboard"
+  /handymen:
+    get:
+      operationId: listHandymen
+      tags: [marketplace]
+      summary: List nearby handymen
+      parameters:
+        - name: category
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: search
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Nearby handymen
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Handyman"
+  /handymen/{id}:
+    get:
+      operationId: getHandyman
+      tags: [marketplace]
+      summary: Get a handyman profile
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Handyman profile
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Handyman"
+        "404":
+          description: Handyman not found
+  /service-requests:
+    get:
+      operationId: listServiceRequests
+      tags: [marketplace]
+      summary: List service requests for the current demo role
+      parameters:
+        - name: role
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [customer, handyman]
+      responses:
+        "200":
+          description: Service requests
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ServiceRequest"
+    post:
+      operationId: createServiceRequest
+      tags: [marketplace]
+      summary: Create a service request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ServiceRequestInput"
+      responses:
+        "201":
+          description: Created service request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceRequest"
+  /service-requests/{id}:
+    get:
+      operationId: getServiceRequest
+      tags: [marketplace]
+      summary: Get a service request
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Service request detail
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceRequestDetail"
+        "404":
+          description: Service request not found
+  /service-requests/{id}/quotes:
+    get:
+      operationId: listQuotes
+      tags: [marketplace]
+      summary: List quotes for a service request
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Quotes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Quote"
+    post:
+      operationId: createQuote
+      tags: [marketplace]
+      summary: Submit a quote
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/QuoteInput"
+      responses:
+        "201":
+          description: Created quote
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Quote"
+  /quotes/{id}/accept:
+    post:
+      operationId: acceptQuote
+      tags: [marketplace]
+      summary: Accept a quote and book the job
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Accepted quote
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+  /jobs/{id}/status:
+    patch:
+      operationId: updateJobStatus
+      tags: [marketplace]
+      summary: Update the job status
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/JobStatusInput"
+      responses:
+        "200":
+          description: Updated job
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+  /jobs/{id}/review:
+    post:
+      operationId: createReview
+      tags: [marketplace]
+      summary: Review a completed job
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReviewInput"
+      responses:
+        "201":
+          description: Created review
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Review"
+  /notifications:
+    get:
+      operationId: listNotifications
+      tags: [marketplace]
+      summary: List in-app notifications
+      responses:
+        "200":
+          description: Notifications
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Notification"
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+        - status
+    ServiceCategory:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        icon:
+          type: string
+        requestCount:
+          type: integer
+      required: [id, name, description, icon, requestCount]
+    Handyman:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        title:
+          type: string
+        avatar:
+          type: string
+        rating:
+          type: number
+        completedJobs:
+          type: integer
+        yearsExperience:
+          type: integer
+        distanceKm:
+          type: number
+        responseRate:
+          type: integer
+        responseTime:
+          type: string
+        services:
+          type: array
+          items:
+            type: string
+        serviceArea:
+          type: string
+        available:
+          type: boolean
+        verified:
+          type: boolean
+        reviewCount:
+          type: integer
+        reviewExcerpt:
+          type: string
+      required:
+        [id, name, title, avatar, rating, completedJobs, yearsExperience, distanceKm, responseRate, responseTime, services, serviceArea, available, verified, reviewCount, reviewExcerpt]
+    ServiceRequest:
+      type: object
+      properties:
+        id:
+          type: integer
+        category:
+          type: string
+        description:
+          type: string
+        location:
+          type: string
+        preferredTime:
+          type: string
+        requestType:
+          type: string
+          enum: [normal, emergency]
+        status:
+          type: string
+          enum: [REQUESTED, MATCHING, OFFERS_RECEIVED, BOOKED, ON_THE_WAY, ARRIVED, IN_PROGRESS, COMPLETED, PAID, REVIEWED, CANCELLED, DISPUTED]
+        photoCount:
+          type: integer
+        quoteCount:
+          type: integer
+        createdAt:
+          type: string
+        handymanName:
+          type: ["string", "null"]
+        handymanAvatar:
+          type: ["string", "null"]
+        jobId:
+          type: ["integer", "null"]
+      required: [id, category, description, location, preferredTime, requestType, status, photoCount, quoteCount, createdAt, handymanName, handymanAvatar, jobId]
+    ServiceRequestInput:
+      type: object
+      properties:
+        category:
+          type: string
+        description:
+          type: string
+          minLength: 10
+        location:
+          type: string
+        preferredTime:
+          type: string
+        requestType:
+          type: string
+          enum: [normal, emergency]
+        photoCount:
+          type: integer
+      required: [category, description, location, preferredTime, requestType, photoCount]
+    ServiceRequestDetail:
+      allOf:
+        - $ref: "#/components/schemas/ServiceRequest"
+        - type: object
+          properties:
+            photos:
+              type: array
+              items:
+                type: string
+            quotes:
+              type: array
+              items:
+                $ref: "#/components/schemas/Quote"
+            job:
+              anyOf:
+                - $ref: "#/components/schemas/Job"
+                - type: "null"
+          required: [photos, quotes, job]
+    Quote:
+      type: object
+      properties:
+        id:
+          type: integer
+        requestId:
+          type: integer
+        handymanId:
+          type: integer
+        handyman:
+          $ref: "#/components/schemas/Handyman"
+        laborPrice:
+          type: number
+        materialCost:
+          type: number
+        totalPrice:
+          type: number
+        duration:
+          type: string
+        notes:
+          type: string
+        expiresAt:
+          type: ["string", "null"]
+        status:
+          type: string
+          enum: [PENDING, ACCEPTED, REJECTED, EXPIRED]
+        createdAt:
+          type: string
+      required: [id, requestId, handymanId, handyman, laborPrice, materialCost, totalPrice, duration, notes, expiresAt, status, createdAt]
+    QuoteInput:
+      type: object
+      properties:
+        laborPrice:
+          type: number
+          minimum: 0
+        materialCost:
+          type: number
+          minimum: 0
+        duration:
+          type: string
+        notes:
+          type: string
+      required: [laborPrice, materialCost, duration, notes]
+    Job:
+      type: object
+      properties:
+        id:
+          type: integer
+        requestId:
+          type: integer
+        quoteId:
+          type: integer
+        customerName:
+          type: string
+        handymanName:
+          type: string
+        handymanAvatar:
+          type: string
+        category:
+          type: string
+        location:
+          type: string
+        scheduledFor:
+          type: string
+        totalPrice:
+          type: number
+        status:
+          type: string
+          enum: [BOOKED, ON_THE_WAY, ARRIVED, IN_PROGRESS, COMPLETED, PAID, REVIEWED]
+      required: [id, requestId, quoteId, customerName, handymanName, handymanAvatar, category, location, scheduledFor, totalPrice, status]
+    JobStatusInput:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [ON_THE_WAY, ARRIVED, IN_PROGRESS, COMPLETED, PAID, REVIEWED]
+      required: [status]
+    Review:
+      type: object
+      properties:
+        id:
+          type: integer
+        jobId:
+          type: integer
+        rating:
+          type: integer
+          minimum: 1
+          maximum: 5
+        comment:
+          type: string
+        authorName:
+          type: string
+      required: [id, jobId, rating, comment, authorName]
+    ReviewInput:
+      type: object
+      properties:
+        rating:
+          type: integer
+          minimum: 1
+          maximum: 5
+        comment:
+          type: string
+      required: [rating, comment]
+    Notification:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        message:
+          type: string
+        type:
+          type: string
+        read:
+          type: boolean
+        createdAt:
+          type: string
+      required: [id, title, message, type, read, createdAt]
+    CustomerDashboard:
+      type: object
+      properties:
+        customerName:
+          type: string
+        activeJobs:
+          type: integer
+        pendingRequests:
+          type: integer
+        completedJobs:
+          type: integer
+        upcomingAppointments:
+          type: integer
+        requests:
+          type: array
+          items:
+            $ref: "#/components/schemas/ServiceRequest"
+        recommendedHandymen:
+          type: array
+          items:
+            $ref: "#/components/schemas/Handyman"
+      required: [customerName, activeJobs, pendingRequests, completedJobs, upcomingAppointments, requests, recommendedHandymen]
+    HandymanDashboard:
+      type: object
+      properties:
+        handyman:
+          $ref: "#/components/schemas/Handyman"
+        newRequests:
+          type: integer
+        activeJobs:
+          type: integer
+        completedJobs:
+          type: integer
+        todayEarnings:
+          type: number
+        weeklyEarnings:
+          type: number
+        requests:
+          type: array
+          items:
+            $ref: "#/components/schemas/ServiceRequest"
+        activeJob:
+          anyOf:
+            - $ref: "#/components/schemas/Job"
+            - type: "null"
+      required: [handyman, newRequests, activeJobs, completedJobs, todayEarnings, weeklyEarnings, requests, activeJob]
+

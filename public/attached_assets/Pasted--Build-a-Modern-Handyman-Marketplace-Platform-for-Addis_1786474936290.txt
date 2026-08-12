@@ -1,0 +1,1125 @@
+# Build a Modern Handyman Marketplace Platform for Addis Ababa
+
+## 1. Product Overview
+
+Build a production-quality full-stack web application that connects customers in Addis Ababa with verified local handymen/service professionals.
+
+The platform should allow customers to:
+
+* Find service providers
+* Request a service
+* Describe their problem
+* Upload photos
+* Set their location
+* Choose a preferred time
+* Receive offers/quotes from suitable handymen
+* Compare handymen
+* View handyman profiles and ratings
+* Chat with handymen
+* Book a handyman
+* Track the job status
+* Make payment
+* Review the handyman
+* Report problems or disputes
+* Request emergency services
+
+Handymen should be able to:
+
+* Register and create a professional profile
+* Select their skills/services
+* Provide experience information
+* Complete identity/phone verification
+* Set service areas
+* Set availability
+* Receive nearby job requests
+* Accept or reject requests
+* Submit quotes
+* Chat with customers
+* Update job status
+* Navigate to the customer location
+* Complete jobs
+* Track earnings
+* Receive ratings and reviews
+* Build a professional reputation
+
+Administrators should be able to:
+
+* Manage customers
+* Manage handymen
+* Verify handymen
+* Manage service categories
+* Monitor jobs
+* Manage disputes
+* Monitor payments
+* Manage reviews/reports
+* View analytics
+* Suspend or deactivate accounts
+* Manage platform settings
+
+The initial launch location is Addis Ababa, Ethiopia.
+
+The architecture must be designed so that the platform can later expand to other Ethiopian cities and potentially other countries without requiring a complete rewrite.
+
+---
+
+# 2. IMPORTANT DESIGN DIRECTION
+
+The UI must look like a modern international technology startup.
+
+DO NOT make the interface look stereotypically Ethiopian.
+
+Do NOT use:
+
+* Ethiopian flag colors as the primary UI palette
+* Excessive green/yellow/red
+* Traditional Ethiopian patterns
+* Cultural decorations
+* Overly colorful backgrounds
+* Old-fashioned marketplace designs
+* Excessive gradients
+* Cheap-looking cards
+* Cluttered dashboards
+* Cartoon-style illustrations
+* Excessive animations
+
+The fact that the platform launches in Addis Ababa should NOT dominate the visual identity.
+
+The product should feel like a modern global marketplace/SaaS application.
+
+Design inspiration should come from modern products such as:
+
+* Airbnb
+* Uber
+* Stripe
+* Linear
+* Vercel
+* Notion
+* modern SaaS dashboards
+* modern service marketplaces
+
+Do not copy their branding or UI directly. Use them only as references for quality, spacing, usability and visual sophistication.
+
+---
+
+# 3. VISUAL STYLE
+
+Create a clean, premium, modern interface.
+
+Use:
+
+* Neutral/light backgrounds
+* White surfaces
+* Dark text
+* One sophisticated primary accent color
+* Subtle borders
+* Soft shadows
+* Large whitespace
+* Rounded but not excessively rounded components
+* Clear typography
+* Strong visual hierarchy
+* Consistent spacing
+* Professional icons
+* Responsive layouts
+
+The design should feel:
+
+* Trustworthy
+* Premium
+* Fast
+* Professional
+* Minimal
+* Modern
+* Easy to understand
+
+Avoid making everything colorful.
+
+Use color mainly for:
+
+* Primary actions
+* Status indicators
+* Important notifications
+* Success/error states
+* Small visual accents
+
+The UI should work beautifully on both desktop and mobile.
+
+Mobile responsiveness is extremely important because many users will access the platform from phones.
+
+---
+
+# 4. USER TYPES
+
+Implement role-based authentication with three primary roles:
+
+## Customer
+
+Customers request and manage services.
+
+## Handyman
+
+Handymen/service providers receive and complete jobs.
+
+## Admin
+
+Administrators manage the platform.
+
+Design the application so additional roles can be added later.
+
+---
+
+# 5. CUSTOMER EXPERIENCE
+
+Create a modern customer dashboard.
+
+The customer should be able to see:
+
+* Active jobs
+* Pending requests
+* Upcoming appointments
+* Completed jobs
+* Saved/favorite handymen
+* Recent activity
+
+Main customer navigation:
+
+* Home
+* Find a Service
+* My Requests
+* Messages
+* Notifications
+* Payments
+* Profile
+
+---
+
+# 6. CUSTOMER HOME PAGE
+
+Create a clean landing/dashboard experience.
+
+Primary CTA:
+
+"Find a Handyman"
+
+Secondary CTA:
+
+"Emergency Service"
+
+Show service categories such as:
+
+* Plumbing
+* Electrical
+* Carpentry
+* Appliance Repair
+* Painting
+* Cleaning
+* General Maintenance
+* Other
+
+Use clean professional icons.
+
+Also show:
+
+* Recommended handymen
+* Nearby available professionals
+* Recent requests
+* Popular services
+
+---
+
+# 7. CREATE SERVICE REQUEST
+
+Create a multi-step request flow.
+
+Step 1:
+Select service category.
+
+Step 2:
+Describe the problem.
+
+Example:
+
+"My kitchen sink is leaking underneath the cabinet."
+
+Step 3:
+Upload photos.
+
+Allow multiple images.
+
+Step 4:
+Set location.
+
+Use map/location functionality where possible.
+
+Step 5:
+Choose preferred date/time.
+
+Step 6:
+Choose normal or emergency service.
+
+Step 7:
+Review request.
+
+Step 8:
+Submit.
+
+After submission:
+
+"Finding suitable handymen near you..."
+
+---
+
+# 8. HANDYMAN MATCHING
+
+Create a matching system.
+
+The system should consider:
+
+* Service category
+* Location/distance
+* Availability
+* Current workload
+* Rating
+* Experience
+* Verification status
+
+For normal jobs, suitable handymen should receive the request and be able to submit a quote.
+
+For emergency jobs, prioritize:
+
+* Currently available handymen
+* Short distance
+* Matching service
+* Good rating
+
+The matching logic should be modular so it can be improved later.
+
+---
+
+# 9. QUOTATION SYSTEM
+
+Handymen can submit offers.
+
+A quote should include:
+
+* Labor price
+* Estimated material cost
+* Total estimated price
+* Estimated duration
+* Additional notes
+* Quote expiration time if applicable
+
+Customers should be able to compare offers.
+
+Example:
+
+Handyman:
+Abebe
+
+Rating:
+4.8
+
+Completed jobs:
+126
+
+Distance:
+2.1 km
+
+Estimated total:
+800 ETB
+
+Estimated duration:
+2 hours
+
+The customer can:
+
+* Accept
+* Reject
+* Ask a question
+* Chat
+* View profile
+
+---
+
+# 10. HANDYMAN PROFILE
+
+Create a professional profile similar to a modern service marketplace.
+
+Show:
+
+* Profile photo
+* Name
+* Professional title
+* Rating
+* Number of completed jobs
+* Years of experience
+* Services
+* Service area
+* Availability
+* Verification badges
+* Reviews
+* Portfolio/work photos
+* Response rate
+* Average response time
+
+Example:
+
+Abebe Mekonnen
+
+Professional Plumber
+
+★★★★★ 4.8
+
+126 completed jobs
+
+✓ Identity verified
+
+✓ Phone verified
+
+3 years experience
+
+Add a clean trust/reputation system.
+
+---
+
+# 11. HANDYMAN DASHBOARD
+
+Handymen should have a separate dashboard.
+
+Navigation:
+
+* Dashboard
+* Job Requests
+* Active Jobs
+* Completed Jobs
+* Messages
+* Earnings
+* Reviews
+* Availability
+* Profile
+
+Dashboard should show:
+
+* New requests
+* Active job
+* Today's earnings
+* Weekly earnings
+* Completed jobs
+* Rating
+* Response rate
+
+---
+
+# 12. HANDYMAN JOB REQUEST
+
+Show incoming requests clearly.
+
+Example:
+
+NEW SERVICE REQUEST
+
+Plumbing
+
+Kitchen sink leaking
+
+Distance:
+2.3 km
+
+Preferred time:
+Today, 4:00 PM - 6:00 PM
+
+Photos:
+[images]
+
+Customer location:
+[map]
+
+Actions:
+
+Accept / Submit Quote
+
+Do not overwhelm the handyman with unnecessary information.
+
+---
+
+# 13. JOB STATUS SYSTEM
+
+Every job should have a clear lifecycle.
+
+Use these states:
+
+REQUESTED
+
+MATCHING
+
+OFFERS_RECEIVED
+
+BOOKED
+
+ON_THE_WAY
+
+ARRIVED
+
+IN_PROGRESS
+
+COMPLETED
+
+PAID
+
+REVIEWED
+
+Also support:
+
+CANCELLED
+
+DISPUTED
+
+The status system should be implemented in the backend as well as the UI.
+
+Use clean visual status indicators.
+
+---
+
+# 14. REAL-TIME CHAT
+
+Implement customer ↔ handyman messaging.
+
+Support:
+
+* Text
+* Image attachments
+* Job context
+* Message timestamps
+* Read/unread status
+* Notifications
+
+Keep the interface simple and modern.
+
+Do not build video calling initially.
+
+---
+
+# 15. NOTIFICATIONS
+
+Implement notifications for:
+
+Customer:
+
+* Request submitted
+* New quote
+* Quote accepted
+* Handyman on the way
+* Handyman arrived
+* Job completed
+* Payment
+* New message
+* Review reminder
+
+Handyman:
+
+* New job request
+* Customer accepted quote
+* New message
+* Job reminder
+* Payment received
+* Review received
+
+Use in-app notifications first.
+
+Architect the system so push/SMS notifications can be added later.
+
+---
+
+# 16. EMERGENCY SERVICES
+
+Emergency requests are different from normal jobs.
+
+Customer can select:
+
+"Emergency Service"
+
+Examples:
+
+* Major water leak
+* Electrical problem
+* Locked door
+* Broken appliance
+* Other urgent problem
+
+Prioritize nearby available handymen.
+
+Show:
+
+"Finding available professionals near you..."
+
+Do not make the emergency UI visually childish or overly red.
+
+Use subtle but clear urgency indicators.
+
+---
+
+# 17. PAYMENTS
+
+Design the payment architecture so multiple payment providers can be integrated later.
+
+Initially support:
+
+* Cash
+* Digital payment record
+
+The backend should abstract the payment provider.
+
+Do not tightly couple the application to a single payment provider.
+
+Payment states:
+
+PENDING
+
+AUTHORIZED
+
+PAID
+
+FAILED
+
+REFUNDED
+
+DISPUTED
+
+Use ETB as the initial currency.
+
+---
+
+# 18. REVIEWS AND RATINGS
+
+After a completed job, the customer can rate the handyman.
+
+Rating:
+
+1–5 stars
+
+Optional written review.
+
+Allow admins to moderate abusive or fraudulent reviews.
+
+Handyman ratings should contribute to their reputation.
+
+Do not allow users to manipulate ratings easily.
+
+---
+
+# 19. DISPUTE SYSTEM
+
+Customers and handymen should be able to report problems.
+
+Examples:
+
+* Handyman did not arrive
+* Work was incomplete
+* Price disagreement
+* Damage
+* Customer unavailable
+* Other
+
+Create a dispute record.
+
+Admin can review the dispute and update its status.
+
+Dispute states:
+
+OPEN
+
+UNDER_REVIEW
+
+RESOLVED
+
+REJECTED
+
+---
+
+# 20. ADMIN DASHBOARD
+
+Create a professional admin dashboard.
+
+Show:
+
+* Total customers
+* Total handymen
+* Verified handymen
+* Active jobs
+* Completed jobs
+* Cancelled jobs
+* Revenue
+* Disputes
+* Average rating
+* Recent activity
+
+Admin navigation:
+
+* Overview
+* Customers
+* Handymen
+* Verification
+* Services
+* Jobs
+* Payments
+* Disputes
+* Reviews
+* Reports
+* Settings
+
+Include filtering, searching and pagination.
+
+---
+
+# 21. HANDYMAN VERIFICATION
+
+Create a verification workflow.
+
+Potential verification information:
+
+* Full name
+* Phone number
+* Profile photo
+* Identity information
+* Service category
+* Experience
+* Service area
+* Supporting documents where required
+
+Admin should be able to:
+
+Approve
+
+Reject
+
+Request additional information
+
+Suspend
+
+Do not claim a user is verified until an admin has approved the verification.
+
+Create a verification status:
+
+PENDING
+
+UNDER_REVIEW
+
+VERIFIED
+
+REJECTED
+
+SUSPENDED
+
+---
+
+# 22. LOCATION
+
+The platform should be location-aware.
+
+Initially support Addis Ababa.
+
+Use location for:
+
+* Finding nearby handymen
+* Showing distance
+* Matching jobs
+* Service areas
+* Emergency requests
+
+Do not build overly complex GIS infrastructure in the first version.
+
+Use a clean abstraction so more advanced geographic search can be added later.
+
+---
+
+# 23. DATABASE DESIGN
+
+Create a proper relational database.
+
+Core entities should include at minimum:
+
+User
+
+CustomerProfile
+
+HandymanProfile
+
+ServiceCategory
+
+HandymanService
+
+Verification
+
+ServiceRequest
+
+Job
+
+Quote
+
+Message
+
+Notification
+
+Payment
+
+Review
+
+Dispute
+
+Availability
+
+Location
+
+PortfolioItem
+
+AdminAction
+
+Design relationships carefully.
+
+Use foreign keys.
+
+Use appropriate indexes.
+
+Do not store everything in one huge User table.
+
+Keep the database normalized where practical.
+
+---
+
+# 24. SECURITY
+
+Implement:
+
+* Secure authentication
+* Password hashing
+* Role-based authorization
+* Input validation
+* File upload validation
+* Rate limiting where appropriate
+* Secure API endpoints
+* Protection against unauthorized role access
+* Secure environment variables
+* Server-side validation
+
+Never trust client-side permissions.
+
+A customer must never be able to call an admin endpoint simply by modifying frontend code.
+
+---
+
+# 25. FILE UPLOADS
+
+Users may upload:
+
+* Profile photos
+* Job photos
+* Portfolio images
+* Verification documents
+
+Validate:
+
+* File type
+* File size
+* Filename
+* Access permissions
+
+Do not expose private verification documents publicly.
+
+---
+
+# 26. RESPONSIVE DESIGN
+
+Mobile-first.
+
+The application must work properly on:
+
+* Android phones
+* iPhones
+* Tablets
+* Desktop
+* Large monitors
+
+The customer experience should be especially optimized for mobile.
+
+Do not simply shrink the desktop interface.
+
+Create appropriate mobile navigation and layouts.
+
+---
+
+# 27. ACCESSIBILITY
+
+Implement:
+
+* Proper semantic HTML
+* Keyboard navigation
+* Accessible labels
+* Good contrast
+* Focus states
+* Screen-reader-friendly controls
+* Appropriate touch target sizes
+
+---
+
+# 28. PERFORMANCE
+
+Optimize for users with slower mobile connections.
+
+Avoid:
+
+* Huge JavaScript bundles
+* Unnecessary animations
+* Huge images
+* Excessive API calls
+
+Use:
+
+* Lazy loading
+* Image optimization
+* Pagination
+* Caching where appropriate
+* Efficient database queries
+
+---
+
+# 29. ARCHITECTURE
+
+Use a clean and maintainable architecture.
+
+Separate:
+
+* UI
+* Business logic
+* API
+* Database access
+* Authentication
+* Notifications
+* Payments
+* Matching
+* File storage
+
+Do not put all business logic inside UI components.
+
+Create reusable services/modules.
+
+The matching engine, payment system and notification system should be replaceable/extensible.
+
+---
+
+# 30. DEVELOPMENT STRATEGY
+
+Do NOT try to build every feature simultaneously.
+
+Build the MVP in stages.
+
+## Phase 1 — Foundation
+
+* Project setup
+* Database
+* Authentication
+* Roles
+* Customer profile
+* Handyman profile
+* Admin account
+* Service categories
+
+## Phase 2 — Core Marketplace
+
+* Create service request
+* Job matching
+* Handyman receives request
+* Quote system
+* Customer compares quotes
+* Customer accepts quote
+* Job lifecycle
+
+## Phase 3 — Communication
+
+* Chat
+* Notifications
+* Job updates
+
+## Phase 4 — Trust
+
+* Verification
+* Ratings
+* Reviews
+* Handyman portfolio
+
+## Phase 5 — Payments
+
+* Payment abstraction
+* Cash payment records
+* Digital payment integration architecture
+
+## Phase 6 — Advanced
+
+* Emergency requests
+* Location improvements
+* Live tracking
+* Analytics
+* Advanced matching
+* Disputes
+
+---
+
+# 31. IMPORTANT MVP RULE
+
+Do not over-engineer the first release.
+
+The first usable version should prove one thing:
+
+A real customer can request a service and successfully connect with a real handyman.
+
+The minimum successful flow is:
+
+Customer registers
+
+→ chooses service
+
+→ creates request
+
+→ handyman receives request
+
+→ handyman submits quote
+
+→ customer accepts
+
+→ handyman performs job
+
+→ job marked completed
+
+→ customer reviews handyman
+
+Everything else should support this core loop.
+
+---
+
+# 32. UI COMPONENT SYSTEM
+
+Create a reusable design system.
+
+Components should include:
+
+* Buttons
+* Inputs
+* Selects
+* Modals
+* Cards
+* Tables
+* Badges
+* Tabs
+* Dropdowns
+* Toast notifications
+* Dialogs
+* Forms
+* Navigation
+* Mobile navigation
+* Status indicators
+* Avatar
+* Rating component
+* Skeleton loaders
+* Empty states
+* Error states
+
+Keep spacing, typography, borders, shadows and interaction behavior consistent throughout the entire application.
+
+---
+
+# 33. UI QUALITY REQUIREMENT
+
+Do not produce a generic AI-generated dashboard.
+
+Avoid the common AI UI problems:
+
+* Too many cards
+* Too many gradients
+* Random colors
+* Excessive rounded corners
+* Huge headings
+* Poor spacing
+* Inconsistent icons
+* Unnecessary charts
+* Fake statistics
+* Empty dashboards filled with decorative elements
+
+Every UI element should have a purpose.
+
+Prioritize usability over decoration.
+
+---
+
+# 34. DATA
+
+Do not fill the production UI with fake statistics presented as real data.
+
+For development/demo mode, create clearly identifiable seed/demo data.
+
+The application should use realistic example data for development while keeping production data dynamic.
+
+---
+
+# 35. CODE QUALITY
+
+Write clean, maintainable, production-oriented code.
+
+Requirements:
+
+* Strong typing where supported
+* Reusable components
+* Clear naming
+* Modular architecture
+* Environment variables for secrets/configuration
+* Validation
+* Error handling
+* Loading states
+* Empty states
+* Proper API error responses
+* Database constraints
+* Comments only where useful
+
+Avoid unnecessary complexity.
+
+---
+
+# 36. BEFORE CODING
+
+Before implementing the entire application:
+
+1. Analyze the requirements.
+2. Propose the technology stack.
+3. Propose the database schema.
+4. Propose the application architecture.
+5. Propose the folder structure.
+6. Identify any important ambiguities.
+7. Create the initial UI shell.
+8. Then implement the MVP incrementally.
+
+Do not silently make major architectural decisions that conflict with these requirements.
+
+If there is a better technical approach, explain it briefly and use it.
+
+---
+
+# 37. MOST IMPORTANT PRODUCT PRINCIPLE
+
+This should not feel like a school project.
+
+Build it as if it could eventually become a real company.
+
+The application should communicate:
+
+"Find a trusted professional to solve your problem."
+
+It should feel trustworthy, fast, modern and professional from the first screen.
+
+The visual design should be internationally modern, not culturally themed.
+
+Launch market:
+
+Addis Ababa, Ethiopia.
+
+Future:
+
+Expand to other cities and countries.
+
+Start with a strong MVP, but keep the architecture ready for growth.
