@@ -1,0 +1,13 @@
+node_modules/
+.env
+dist/
+build/
+*.log
+.DS_Store
+uploads/
+coverage/
+*.zip
+*.tar.gz
+.idea/
+.vscode/
+.env.*.local

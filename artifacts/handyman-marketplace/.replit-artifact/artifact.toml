@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Handyman Marketplace"
+description = "A modern service marketplace for Addis Ababa that helps customers find trusted local professionals, request services, compare quotes, and manage jobs through completion."
+version = "1.0.0"
+id = "artifacts/handyman-marketplace"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22241
+
+[services.development]
+run = "pnpm --filter @workspace/handyman-marketplace run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/handyman-marketplace", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/handyman-marketplace/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22241"
+BASE_PATH = "/"
